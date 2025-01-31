@@ -29,7 +29,7 @@ Harald holds a number of registries to be used by the protocol to store values.
 These registries can be used to perform multiple operations, such as addition,
 substraction, encoding and decoding... etc.
 
-Harald dinamically allocates an array of results where the protocol can store
+Harald dynamically allocates an array of results where the protocol can store
 the responses to each request performed upon sending a payload fragment.
 
 ![Harald high-level diagram](HARALD_diag.png)
