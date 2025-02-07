@@ -571,6 +571,7 @@ void h_recv()
 	}
 
 	ssize_t total_bytes_read = 0;
+	uint32_t new_buffer_size = response_size;
 	while (1)
 	{
 		ssize_t read_size;
@@ -589,9 +590,13 @@ void h_recv()
 
 		total_bytes_read += read_size;
 
-		if (total_bytes_read >= response_size)
+		if (total_bytes_read >= new_buffer_size)
 		{
-			char *new_buffer = (char *)realloc(response, response_size * BUFFER_GROWTH_FACTOR);
+			new_buffer_size = total_bytes_read + response_size * BUFFER_GROWTH_FACTOR;
+			char *new_buffer = (char *)realloc(response, new_buffer_size);
+#ifdef DEBUG
+	DEBUG_PRINT("OPCODE::0x%x--RECV -- reallocating %u. Current size: %zd\n", H_F_RECV, new_buffer_size, total_bytes_read);
+#endif
 			if (new_buffer == NULL)
 			{
 				__set_err(HARALD_ERR_MEM_ALLOC_ERROR);
