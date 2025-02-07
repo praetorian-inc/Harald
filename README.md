@@ -29,7 +29,7 @@ Harald holds a number of registries to be used by the protocol to store values.
 These registries can be used to perform multiple operations, such as addition,
 substraction, encoding and decoding... etc.
 
-Harald dinamically allocates an array of results where the protocol can store
+Harald dynamically allocates an array of results where the protocol can store
 the responses to each request performed upon sending a payload fragment.
 
 ![Harald high-level diagram](HARALD_diag.png)
@@ -189,6 +189,32 @@ H_F_CLOSE
 10. Close (0x08) the connection.
 
 
+## Requirements
+
+You'll need a compiler to build it. Such as GCC, Clang, or Microsoft's CL. Also, 
+there are some libraries dependencies:
+
+### Linux
+
+Install LibSSL and pkg-config:
+
+```
+sudo apt install libssl-dev pkg-config
+```
+
+### OSX
+
+Install OpenSSL via `brew` or build and configure it yourself. 
+
+```
+brew install openssl
+``` 
+
+### Windows
+
+Get OpenSSL from any of their [linked distributors](https://wiki.openssl.org/index.php/Binaries) or build and configure it yourself.
+
+
 ## BUILD
 
 The repository contains a [Makefile](Makefile) to build the library and some
@@ -218,6 +244,8 @@ To test Harald's functionalities, run the provisioned servers
 [socket_server_test.py](socket_server_test.py) and
 [https_server_test.py](https_server_test.py). These, will create a socket and
 HTTPS server respectively to be used by the test binaries.
+
+> Note: You may need to set your `LD_LIBRARY_PATH` to the current folder: ```LD_LIBRARY_PATH=$LD_LIBRARY_PATH:. ./test_harald```
 
 You'll be required to create an SSL/TLS certificate for HTTPS communication
 (self-signed is fine). You can create one using OpenSSL with the following
