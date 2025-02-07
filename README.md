@@ -219,6 +219,8 @@ To test Harald's functionalities, run the provisioned servers
 [https_server_test.py](https_server_test.py). These, will create a socket and
 HTTPS server respectively to be used by the test binaries.
 
+> Note: You may need to set your `LD_LIBRARY_PATH` to the current folder: ```LD_LIBRARY_PATH=$LD_LIBRARY_PATH:. ./test_harald```
+
 You'll be required to create an SSL/TLS certificate for HTTPS communication
 (self-signed is fine). You can create one using OpenSSL with the following
 command: 
