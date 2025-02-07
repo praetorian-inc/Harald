@@ -189,6 +189,32 @@ H_F_CLOSE
 10. Close (0x08) the connection.
 
 
+## Requirements
+
+You'll need a compiler to build it. Such as GCC, Clang, or Microsoft's CL. Also, 
+there are some libraries dependencies:
+
+### Linux
+
+Install LibSSL and pkg-config:
+
+```
+sudo apt install libssl-dev pkg-config
+```
+
+### OSX
+
+Install OpenSSL via `brew` or build and configure it yourself. 
+
+```
+brew install openssl
+``` 
+
+### Windows
+
+Get OpenSSL from any of their [linked distributors](https://wiki.openssl.org/index.php/Binaries) or build and configure it yourself.
+
+
 ## BUILD
 
 The repository contains a [Makefile](Makefile) to build the library and some
